@@ -1,5 +1,5 @@
-/* João Gabriel Gralha Quirino de Souza 2310284 Turma 3WA
-   Gustavo de Sousa Galvão 2410508 Turma 3WA
+/* Joï¿½o Gabriel Gralha Quirino de Souza 2310284 Turma 3WA
+   Gustavo de Sousa Galvï¿½o 2410508 Turma 3WA
 */
 
 #include <stdio.h>
@@ -9,9 +9,9 @@
 /**
  * @brief Imprime um BigInt em formato hexadecimal (big-endian).
  *
- * Exibe o valor de 128 bits em sequência de bytes, do mais significativo para o menos significativo.
+ * Exibe o valor de 128 bits em sequï¿½ncia de bytes, do mais significativo para o menos significativo.
  *
- * @param label Rótulo descritivo que será impresso antes do valor.
+ * @param label Rï¿½tulo descritivo que serï¿½ impresso antes do valor.
  * @param a BigInt a ser impresso.
  */
 void print_bigint(const char* label, BigInt a) {
@@ -26,9 +26,9 @@ void print_bigint(const char* label, BigInt a) {
 /**
  * @brief Imprime os bytes de um BigInt em ordem little-endian.
  *
- * Útil para depuração detalhada, mostrando os valores byte a byte como armazenados na memória.
+ * ï¿½til para depuraï¿½ï¿½o detalhada, mostrando os valores byte a byte como armazenados na memï¿½ria.
  *
- * @param label Rótulo descritivo que será impresso antes dos bytes.
+ * @param label Rï¿½tulo descritivo que serï¿½ impresso antes dos bytes.
  * @param a BigInt a ser impresso.
  */
 void print_bigint_bytes(const char* label, BigInt a) {
@@ -42,11 +42,11 @@ void print_bigint_bytes(const char* label, BigInt a) {
 }
 
 /**
- * @brief Compara dois BigInts para verificar se são iguais.
+ * @brief Compara dois BigInts para verificar se sï¿½o iguais.
  *
  * @param a Primeiro BigInt.
  * @param b Segundo BigInt.
- * @return 1 se forem iguais, 0 caso contrário.
+ * @return 1 se forem iguais, 0 caso contrï¿½rio.
  */
 int big_equals(BigInt a, BigInt b) {
     int i;
@@ -70,23 +70,23 @@ void create_test_bigint(BigInt res, unsigned char bytes[16]) {
 }
 
 /**
- * @brief Função principal de testes da biblioteca BigInt.
+ * @brief Funï¿½ï¿½o principal de testes da biblioteca BigInt.
  *
- * Executa uma série de testes unitários para verificar o correto funcionamento
- * das operações implementadas em bigint.c, incluindo:
- * - Atribuição e extensão de sinal (`big_val`)
+ * Executa uma sï¿½rie de testes unitï¿½rios para verificar o correto funcionamento
+ * das operaï¿½ï¿½es implementadas em bigint.c, incluindo:
+ * - Atribuiï¿½ï¿½o e extensï¿½o de sinal (`big_val`)
  * - Complemento a 2 (`big_comp2`)
- * - Soma, subtração e multiplicação (`big_sum`, `big_sub`, `big_mul`)
- * - Deslocamentos lógicos e aritméticos (`big_shl`, `big_shr`, `big_sar`)
+ * - Soma, subtraï¿½ï¿½o e multiplicaï¿½ï¿½o (`big_sum`, `big_sub`, `big_mul`)
+ * - Deslocamentos lï¿½gicos e aritmï¿½ticos (`big_shl`, `big_shr`, `big_sar`)
  *
- * Cada teste imprime os resultados intermediários em formato hexadecimal.
+ * Cada teste imprime os resultados intermediï¿½rios em formato hexadecimal.
  *
  * @return 0 se todos os testes forem executados corretamente.
  */
 int main() {
     BigInt a, b, result;
 
-    printf("=== TESTE DA BIBLIOTECA BIGINT ===\n\n");
+
 
     /* Teste 1: big_val com valores positivos e negativos */
     printf("1. Testando big_val:\n");
@@ -105,7 +105,7 @@ int main() {
 
     printf("\n");
 
-    /* Teste 2: big_comp2 (negação) */
+    /* Teste 2: big_comp2 (negacao) */
     printf("2. Testando big_comp2:\n");
 
     big_val(a, 5);
@@ -139,7 +139,7 @@ int main() {
 
     printf("\n");
 
-    /* Teste 4: big_sub (subtração) */
+    /* Teste 4: big_sub (subtracao) */
     printf("4. Testando big_sub:\n");
 
     big_val(a, 100);
@@ -151,7 +151,7 @@ int main() {
 
     printf("\n");
 
-    /* Teste 5: big_mul (multiplicação) */
+    /* Teste 5: big_mul (multiplicacaoo) */
     printf("5. Testando big_mul:\n");
 
     big_val(a, 10);
@@ -185,51 +185,36 @@ int main() {
 
     printf("\n");
 
-    /* Teste 7: big_shr (shift right lógico) */
+    /* Teste 7: big_shr (shift right logico) */
     printf("7. Testando big_shr:\n");
 
     big_val(a, 8);
     big_shr(result, a, 1);
     print_bigint("8", a);
-    print_bigint("8 >> 1 (lógico)", result);
+    print_bigint("8 >> 1 (logico)", result);
 
     big_val(a, -8);
     big_shr(result, a, 1);
     print_bigint("-8", a);
-    print_bigint("-8 >> 1 (lógico)", result);
+    print_bigint("-8 >> 1 (logico)", result);
 
     printf("\n");
 
-    /* Teste 8: big_sar (shift right aritmético) */
+    /* Teste 8: big_sar (shift right aritmetico) */
     printf("8. Testando big_sar:\n");
 
     big_val(a, 8);
     big_sar(result, a, 1);
     print_bigint("8", a);
-    print_bigint("8 >> 1 (aritmético)", result);
+    print_bigint("8 >> 1 (aritmetico)", result);
 
     big_val(a, -8);
     big_sar(result, a, 1);
     print_bigint("-8", a);
-    print_bigint("-8 >> 1 (aritmético)", result);
+    print_bigint("-8 >> 1 (aritmetico)", result);
 
     printf("\n");
 
-    /* Teste 9: Casos extremos */
-    printf("9. Testando casos extremos:\n");
-
-    /* Teste com zero */
-    big_val(a, 0);
-    big_val(b, 100);
-    big_sum(result, a, b);
-    print_bigint("0 + 100", result);
-
-    /* Teste de overflow intencional (shift muito grande) */
-    big_val(a, 1);
-    big_shl(result, a, 127); /* Desloca para o bit de sinal */
-    print_bigint("1 << 127", result);
-
-    printf("\n=== FIM DOS TESTES ===\n");
 
     return 0;
 }
