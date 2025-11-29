@@ -6,6 +6,15 @@
 #include <string.h>
 #include "gera_codigo.h"
 
+#define EMIT(b) code[idx++] = (b)
+
+void escreve_int(unsigned char code[], int *idx, int valor) {
+    code[(*idx)++] = valor & 0xFF;
+    code[(*idx)++] = (valor >> 8) & 0xFF;
+    code[(*idx)++] = (valor >> 16) & 0xFF;
+    code[(*idx)++] = (valor >> 24) & 0xFF;
+}
+
 void gera_codigo(FILE *f, unsigned char code[], funcp *entry) {
     char linha[256];  // Buffer para ler cada linha do arquivo
     int idx = 0;      // Cursor: indica a próxima posição livre no vetor code[]
@@ -72,14 +81,18 @@ void gera_codigo(FILE *f, unsigned char code[], funcp *entry) {
             // Tenta ler "ret $número"
             // Note o '$' no formato do sscanf para ignorar o caractere $
             if (sscanf(linha, " ret $%d", &constante) == 1) {
-                // AQUI VOCÊ VAI INSERIR O CÓDIGO PARA: mov $constante, %eax
-                // code[idx++] = ...
+                // mov $10, %eax
+                EMIT(0xb8); // codigo do mov
+
+                //agora precisamos passar os 4 bytes da constante para o resto do comando
+                // nessa instrução, os bytes depois de b8 são os bytes da cte de 4 bytes
                 
-                // Depois do mov, precisamos do 'ret'?
-                // Não necessariamente, pois o 'end' já vai colocar o 'ret'.
-                // Mas geralmente colocamos um jump para o epílogo ou o próprio epílogo aqui.
-                // Dica: Por enquanto, assuma que o ret sai da função direto.
-                // code[idx++] = 0xC3; // ret
+                escreve_int(code, &idx, constante);
+
+                EMIT(0xc9);
+                EMIT(0xc3);
+                continue;              
+
             }
             continue;
         }
