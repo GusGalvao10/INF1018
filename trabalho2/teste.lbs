@@ -1,3 +1,9 @@
 function
-ret $42
+ret $0
+end
+
+function
+v0 = call 0 $999
+zret v0 p0
+ret $1
 end
